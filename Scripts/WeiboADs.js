@@ -18,7 +18,7 @@ const path17 = "/statuses/friends_timeline";
 const path18 = "/!/photos/pic_recommend_status";
 const path19 = "/statuses/video_mixtimeline";
 const path20 = "/video/tiny_stream_video_list";
-const path21 = "/statuses/container_timeline_unread";
+const path21 = "/statuses/container_timeline";
 
 let url = $request.url;
 let body = JSON.parse($response.body);
@@ -113,13 +113,10 @@ function filter_timeline_statuses(statuses) {
 
 function filter_timeline_feed_items(items) {
   if (items && items.length > 0) {
-    let i = items.length;
-    while (i--) {
-      let element = items[i];
-      if (element && element.data && element.data.readtimetype === "adMblog") {
-        items.splice(i, 1);
-      }
-    }
+    return items.filter(function(item) {
+        const isAd = element && element.data && element.data.readtimetype === "adMblog";
+        return !isAd;
+    });
   }
   return items;
 }
