@@ -36,6 +36,9 @@ if (url.indexOf(path1) != -1
   if (body.ad) body.ad = [];
   if (body.num) body.num = body.original_num;
   if (body.trends) body.trends = [];
+  if (body.pageData && body.pageData.pageDataType === "feedStream") {
+      body.items = filter_timeline_feed_items(body.items);
+  }
 }
 
 if (url.indexOf(path3) != -1) {
@@ -106,6 +109,19 @@ function filter_timeline_statuses(statuses) {
     }
   }
   return statuses;
+}
+
+function filter_timeline_feed_items(items) {
+  if (items && items.length > 0) {
+    let i = items.length;
+    while (i--) {
+      let element = items[i];
+      if (element && element.data && element.data.readtimetype === "adMblog") {
+        items.splice(i, 1);
+      }
+    }
+  }
+  return items;
 }
 
 function filter_comments(datas) {
