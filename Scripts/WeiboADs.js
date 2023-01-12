@@ -113,8 +113,8 @@ function filter_timeline_statuses(statuses) {
 
 function filter_timeline_feed_items(items) {
   if (items && items.length > 0) {
-    return items.filter(function(item) {
-        const isAd = element && element.data && element.data.readtimetype === "adMblog";
+    return items.filter(function(element) {
+        const isAd = is_timeline_likerecommend(element.title) || is_timeline_ad(element) || is_stream_video_ad(element);
         return !isAd;
     });
   }
