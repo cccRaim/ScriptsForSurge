@@ -114,6 +114,9 @@ function filter_timeline_statuses(statuses) {
 function filter_timeline_feed_items(items) {
   if (items && items.length > 0) {
     return items.filter(function(element) {
+        if (!element.data) {
+            return true;
+        }
         const isAd = is_timeline_likerecommend(element.data.title) || is_timeline_ad(element.data) || is_stream_video_ad(element.data);
         return !isAd;
     });
