@@ -18,11 +18,19 @@ const path17 = "/statuses/friends_timeline";
 const path18 = "/!/photos/pic_recommend_status";
 const path19 = "/statuses/video_mixtimeline";
 const path20 = "/video/tiny_stream_video_list";
+const path21 = "/statuses/container_timeline_unread";
 
 let url = $request.url;
 let body = JSON.parse($response.body);
 
-if (url.indexOf(path1) != -1 || url.indexOf(path2) != -1 || url.indexOf(path10) != -1 || url.indexOf(path15) != -1 || url.indexOf(path17) != -1||url.indexOf(path20) != -1) {
+if (url.indexOf(path1) != -1
+    || url.indexOf(path2) != -1
+    || url.indexOf(path10) != -1
+    || url.indexOf(path15) != -1
+    || url.indexOf(path17) != -1
+    || url.indexOf(path20) != -1
+    || url.indexOf(path21) != -1
+   ) {
   if (body.statuses) body.statuses = filter_timeline_statuses(body.statuses);
   if (body.advertises) body.advertises = [];
   if (body.ad) body.ad = [];
