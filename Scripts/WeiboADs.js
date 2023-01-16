@@ -114,6 +114,9 @@ function filter_timeline_statuses(statuses) {
 function filter_timeline_feed_items(items) {
   if (items && items.length > 0) {
     return items.filter(function(element) {
+        if (element.type === 'horizontal') {
+            return false;
+        }
         if (!element.data) {
             return true;
         }
