@@ -1,3 +1,3 @@
 setTimeout(function() {
   $done({});
-}, 5 * 1000);
+}, ($argument || 5) * 1000);
