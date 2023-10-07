@@ -4,4 +4,4 @@ setTimeount(() => {
   $done({
     body: JSON.stringify(body)
   });
-}, 10 * 1000);
+}, 5 * 1000);
