@@ -1,7 +1,3 @@
-let body = JSON.parse($response.body);
-
 setTimeount(() => {
-  $done({
-    body: JSON.stringify(body)
-  });
+  $done({});
 }, 5 * 1000);
